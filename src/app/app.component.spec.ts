@@ -18,16 +18,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'ng-clone-gmail-login-form'`, () => {
+  it(`should have as title 'ng-clone-gmail-signup-form'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('ng-clone-gmail-login-form');
+    expect(app.title).toEqual('ng-clone-gmail-signup-form');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('ng-clone-gmail-login-form app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('ng-clone-gmail-signup-form app is running!');
   });
 });

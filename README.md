@@ -1,16 +1,16 @@
-# ng-clone-gmail-login-form
+# ng-clone-gmail-signup-form
 
-![](https://github.com/kasaharu/ng-clone-gmail-login-form/workflows/Node%20CI/badge.svg)
+![](https://github.com/kasaharu/ng-clone-gmail-signup-form/workflows/Node%20CI/badge.svg)
 
 ## 使い方
 
 ### デプロイ
 
 ```shell
-$ yarn ng deploy --base-href=/ng-clone-gmail-login-form/
+$ yarn ng deploy --base-href=/ng-clone-gmail-signup-form/
 ```
 
-- デプロイ完了後 `https://kasaharu.github.io/ng-clone-gmail-login-form` にアクセスするとページが表示される
+- デプロイ完了後 `https://kasaharu.github.io/ng-clone-gmail-signup-form` にアクセスするとページが表示される
 
 ## 各種バージョン
 

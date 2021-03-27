@@ -10,7 +10,7 @@ describe('workspace-project App', () => {
 
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('ng-clone-gmail-login-form app is running!');
+    expect(page.getTitleText()).toEqual('ng-clone-gmail-signup-form app is running!');
   });
 
   afterEach(async () => {
