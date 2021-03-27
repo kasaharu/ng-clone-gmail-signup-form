@@ -1,0 +1,16 @@
+:host {
+  height: 100vh;
+}
+
+.main {
+  width: 80%;
+  margin: 2rem auto;
+  flex: 1;
+}
+
+@media screen and (max-width: 600px) {
+  .main {
+    width: 90%;
+    margin: 1rem auto;
+  }
+}
