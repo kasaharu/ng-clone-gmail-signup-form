@@ -1,4 +1,4 @@
-# NgBasis
+# ng-clone-gmail-login-form
 
 ![](https://github.com/kasaharu/ng-basis/workflows/Node%20CI/badge.svg)
 
