@@ -56,17 +56,18 @@ jobs:
         env:
           CI: true
 
-      - name: unit test ng-clone-gmail-login-form
-        run: |
-          yarn test:ci ng-clone-gmail-login-form
-        env:
-          CI: true
+      # - name: unit test ng-clone-gmail-login-form
+      #   run: |
+      #     yarn test:ci ng-clone-gmail-login-form
+      #   env:
+      #     CI: true
 
-      - name: Archive code coverage results
-        uses: actions/upload-artifact@v1
-        with:
-          name: code-coverage-report-for-ng-clone-gmail-login-form
-          path: coverage/ng-clone-gmail-login-form
+      # - name: Archive code coverage results
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: code-coverage-report-for-ng-clone-gmail-login-form
+      #     path: coverage/ng-clone-gmail-login-form
+
       #       - name: e2e test ng-clone-gmail-login-form
       #         run: |
       #           yarn e2e:ci ng-clone-gmail-login-form
