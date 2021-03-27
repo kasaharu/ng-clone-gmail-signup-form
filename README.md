@@ -1,6 +1,6 @@
 # ng-clone-gmail-login-form
 
-![](https://github.com/kasaharu/ng-basis/workflows/Node%20CI/badge.svg)
+![](https://github.com/kasaharu/ng-clone-gmail-login-form/workflows/Node%20CI/badge.svg)
 
 ## 使い方
 
