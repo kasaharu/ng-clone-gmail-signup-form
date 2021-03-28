@@ -14,4 +14,14 @@ export class SignupFormComponent implements OnInit {
   form: FormGroup<User> = this.fb.group({ firstName: [''], familyName: [''], userName: [''], password: [''], passwordConfirmation: [''] });
 
   ngOnInit(): void {}
+
+  onSubmit(): void {
+    if (this.form.valid) {
+      // tslint:disable-next-line:no-console
+      console.log(this.form.value);
+      return;
+    }
+    // tslint:disable-next-line:no-console
+    console.log('this form is invalid.');
+  }
 }
