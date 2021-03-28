@@ -1,13 +1,23 @@
-<form [formGroup]="form">
-  <div>
-    <input type="text" formControlName="firstName" />
-    <input type="text" formControlName="familyName" />
-  </div>
-  <div>
-    <input type="text" formControlName="userName" />
-  </div>
-  <div>
-    <input type="text" formControlName="password" />
-    <input type="text" formControlName="passwordConfirmation" />
-  </div>
-</form>
+<div class="title">
+  <span>ダミーアカウントの作成</span>
+</div>
+
+<div class="contents">
+  <form [formGroup]="form">
+    <div class="fullname">
+      <input type="text" formControlName="firstName" />
+      <input type="text" formControlName="familyName" />
+    </div>
+    <div class="username">
+      <input type="text" formControlName="userName" />
+    </div>
+    <div class="password">
+      <input type="text" formControlName="password" />
+      <input type="text" formControlName="passwordConfirmation" />
+    </div>
+
+    <div class="action">
+      <button class="submit-button">次へ</button>
+    </div>
+  </form>
+</div>
