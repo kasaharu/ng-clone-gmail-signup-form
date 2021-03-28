@@ -1,4 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
+import { User } from '../../../../domain/user';
 
 @Component({
   selector: 'app-signup-form',
@@ -7,7 +9,9 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SignupFormComponent implements OnInit {
-  constructor() {}
+  constructor(private readonly fb: FormBuilder) {}
+
+  form: FormGroup<User> = this.fb.group({ firstName: [''], familyName: [''], userName: [''], password: [''], passwordConfirmation: [''] });
 
   ngOnInit(): void {}
 }
