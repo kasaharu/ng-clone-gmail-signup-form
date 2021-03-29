@@ -8,13 +8,39 @@
       <input type="text" formControlName="familyName" placeholder="姓" />
       <input type="text" formControlName="firstName" placeholder="名" />
     </div>
+    <ng-container *ngIf="familyName?.errors?.required && firstName?.errors?.required">
+      <div class="error-message">氏名を入力指定ください</div>
+    </ng-container>
+    <ng-container *ngIf="familyName?.errors?.required && !firstName?.errors?.required">
+      <div class="error-message">名前（姓）を入力してください</div>
+    </ng-container>
+    <ng-container *ngIf="firstName?.errors?.required && !familyName?.errors?.required">
+      <div class="error-message">名前（名）を入力してください</div>
+    </ng-container>
+
     <div class="username">
       <input type="text" formControlName="userName" placeholder="ユーザー名" />
     </div>
+    <ng-container *ngIf="userName?.errors?.required">
+      <div class="error-message">ユーザー名は必須です</div>
+    </ng-container>
+    <ng-container *ngIf="userName?.errors?.minlength">
+      <div class="error-message">ユーザー名は 6 文字から 30 文字の間で設定する必要があります</div>
+    </ng-container>
+
     <div class="password">
       <input type="text" formControlName="password" placeholder="パスワード" />
       <input type="text" formControlName="passwordConfirmation" placeholder="確認" />
     </div>
+    <ng-container *ngIf="password?.errors?.required">
+      <div class="error-message">パスワードを入力</div>
+    </ng-container>
+    <ng-container *ngIf="password?.errors?.minlength">
+      <div class="error-message">パスワードは 8 文字以上で設定してください</div>
+    </ng-container>
+    <ng-container *ngIf="password?.errors === null && password?.value !== passwordConfirmation?.value">
+      <div class="error-message">パスワードが一致しませんでした</div>
+    </ng-container>
 
     <div class="action">
       <button type="submit" class="submit-button" (click)="onSubmit()">次へ</button>

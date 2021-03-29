@@ -23,6 +23,11 @@ input {
   box-sizing: border-box;
 }
 
+.error-message {
+  color: chocolate;
+  font-size: 12px;
+}
+
 .fullname,
 .password {
   display: flex;

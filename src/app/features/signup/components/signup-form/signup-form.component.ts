@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@ngneat/reactive-forms';
-import { User } from '../../../../domain/user';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-signup-form',
@@ -10,8 +9,33 @@ import { User } from '../../../../domain/user';
 })
 export class SignupFormComponent implements OnInit {
   constructor(private readonly fb: FormBuilder) {}
+  form: FormGroup = this.fb.group({
+    firstName: ['', Validators.required],
+    familyName: ['', Validators.required],
+    userName: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(30)]],
+    password: ['', [Validators.required, Validators.minLength(8)]],
+    passwordConfirmation: [''],
+  });
 
-  form: FormGroup<User> = this.fb.group({ firstName: [''], familyName: [''], userName: [''], password: [''], passwordConfirmation: [''] });
+  get firstName() {
+    return this.form.get('firstName');
+  }
+
+  get familyName() {
+    return this.form.get('familyName');
+  }
+
+  get userName() {
+    return this.form.get('userName');
+  }
+
+  get password() {
+    return this.form.get('password');
+  }
+
+  get passwordConfirmation() {
+    return this.form.get('passwordConfirmation');
+  }
 
   ngOnInit(): void {}
 
@@ -22,6 +46,6 @@ export class SignupFormComponent implements OnInit {
       return;
     }
     // tslint:disable-next-line:no-console
-    console.log('this form is invalid.');
+    console.log('this form is invalid. this.form.invalid = ', this.form.invalid);
   }
 }
