@@ -1,6 +1,17 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
+// tslint:disable-next-line:cyclomatic-complexity
+const passwordConfirmationValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  const password = control.get('password');
+  const passwordConfirmation = control.get('passwordConfirmation');
+
+  if (password === null || passwordConfirmation === null) {
+    return null;
+  }
+
+  return password.errors !== null || password.value === passwordConfirmation.value ? null : { unmatchPassword: true };
+};
 @Component({
   selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
@@ -9,13 +20,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class SignupFormComponent implements OnInit {
   constructor(private readonly fb: FormBuilder) {}
-  form: FormGroup = this.fb.group({
-    firstName: ['', Validators.required],
-    familyName: ['', Validators.required],
-    userName: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(30)]],
-    password: ['', [Validators.required, Validators.minLength(8)]],
-    passwordConfirmation: [''],
-  });
+  form: FormGroup = this.fb.group(
+    {
+      firstName: ['', Validators.required],
+      familyName: ['', Validators.required],
+      userName: ['', [Validators.required, Validators.minLength(6), Validators.maxLength(30)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
+      passwordConfirmation: [''],
+    },
+    { validators: passwordConfirmationValidator },
+  );
 
   get firstName() {
     return this.form.get('firstName');
@@ -31,10 +45,6 @@ export class SignupFormComponent implements OnInit {
 
   get password() {
     return this.form.get('password');
-  }
-
-  get passwordConfirmation() {
-    return this.form.get('passwordConfirmation');
   }
 
   ngOnInit(): void {}

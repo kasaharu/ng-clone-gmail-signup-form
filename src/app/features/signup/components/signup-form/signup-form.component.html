@@ -38,7 +38,7 @@
     <ng-container *ngIf="password?.errors?.minlength">
       <div class="error-message">パスワードは 8 文字以上で設定してください</div>
     </ng-container>
-    <ng-container *ngIf="password?.errors === null && password?.value !== passwordConfirmation?.value">
+    <ng-container *ngIf="form.errors?.unmatchPassword">
       <div class="error-message">パスワードが一致しませんでした</div>
     </ng-container>
 
