@@ -2,6 +2,26 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 
 // tslint:disable-next-line:cyclomatic-complexity
+const fullNameValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+  const firstName = control.get('firstName');
+  const familyName = control.get('familyName');
+
+  if (firstName?.value === '' && familyName?.value === '') {
+    return { emptyFullName: true };
+  }
+
+  if (firstName?.value === '') {
+    return { emptyFirstName: true };
+  }
+
+  if (familyName?.value === '') {
+    return { emptyFamilyName: true };
+  }
+
+  return null;
+};
+
+// tslint:disable-next-line:cyclomatic-complexity
 const passwordConfirmationValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
   const password = control.get('password');
   const passwordConfirmation = control.get('passwordConfirmation');
@@ -28,16 +48,8 @@ export class SignupFormComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(8)]],
       passwordConfirmation: [''],
     },
-    { validators: passwordConfirmationValidator },
+    { validators: [fullNameValidator, passwordConfirmationValidator] },
   );
-
-  get firstName() {
-    return this.form.get('firstName');
-  }
-
-  get familyName() {
-    return this.form.get('familyName');
-  }
 
   get userName() {
     return this.form.get('userName');

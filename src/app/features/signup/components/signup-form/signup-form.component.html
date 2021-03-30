@@ -8,13 +8,13 @@
       <input type="text" formControlName="familyName" placeholder="姓" />
       <input type="text" formControlName="firstName" placeholder="名" />
     </div>
-    <ng-container *ngIf="familyName?.errors?.required && firstName?.errors?.required">
+    <ng-container *ngIf="form?.errors?.emptyFullName">
       <div class="error-message">氏名を入力指定ください</div>
     </ng-container>
-    <ng-container *ngIf="familyName?.errors?.required && !firstName?.errors?.required">
+    <ng-container *ngIf="form?.errors?.emptyFirstName">
       <div class="error-message">名前（姓）を入力してください</div>
     </ng-container>
-    <ng-container *ngIf="firstName?.errors?.required && !familyName?.errors?.required">
+    <ng-container *ngIf="form?.errors?.emptyFamilyName">
       <div class="error-message">名前（名）を入力してください</div>
     </ng-container>
 
