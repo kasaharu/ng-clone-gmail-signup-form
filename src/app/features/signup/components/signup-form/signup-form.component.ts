@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { ValidationErrors, Validators } from '@angular/forms';
-import { AbstractControl, FormBuilder, FormGroup, ValidatorFn } from '@ngneat/reactive-forms';
+import { Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, ValidatorFn } from '@ngneat/reactive-forms';
+import { User } from '../../../../domain/user';
 
 // tslint:disable-next-line:cyclomatic-complexity
-const fullNameValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+const fullNameValidator: ValidatorFn<User> = (control) => {
   const firstName = control.get('firstName');
   const familyName = control.get('familyName');
 
@@ -23,7 +24,7 @@ const fullNameValidator: ValidatorFn = (control: AbstractControl): ValidationErr
 };
 
 // tslint:disable-next-line:cyclomatic-complexity
-const passwordConfirmationValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
+const passwordConfirmationValidator: ValidatorFn<User> = (control) => {
   const password = control.get('password');
   const passwordConfirmation = control.get('passwordConfirmation');
 
@@ -33,6 +34,7 @@ const passwordConfirmationValidator: ValidatorFn = (control: AbstractControl): V
 
   return password.errors !== null || password.value === passwordConfirmation.value ? null : { unmatchPassword: true };
 };
+
 @Component({
   selector: 'app-signup-form',
   templateUrl: './signup-form.component.html',
@@ -41,7 +43,7 @@ const passwordConfirmationValidator: ValidatorFn = (control: AbstractControl): V
 })
 export class SignupFormComponent implements OnInit {
   constructor(private readonly fb: FormBuilder) {}
-  form: FormGroup = this.fb.group(
+  form: FormGroup<User> = this.fb.group(
     {
       firstName: ['', Validators.required],
       familyName: ['', Validators.required],
