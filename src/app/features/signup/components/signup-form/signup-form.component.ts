@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
+import { ValidationErrors, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn } from '@ngneat/reactive-forms';
 
 // tslint:disable-next-line:cyclomatic-complexity
 const fullNameValidator: ValidatorFn = (control: AbstractControl): ValidationErrors | null => {
