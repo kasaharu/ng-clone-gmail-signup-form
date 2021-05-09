@@ -1,8 +1,12 @@
-<div>
+<h2 class="text-xl mb-4">
   <span>ダミー新規会員登録</span>
-</div>
+</h2>
 
-<form [formGroup]="registrationForm">
+<form class="p-4 border border-solid border-gray-200" [formGroup]="registrationForm">
   <app-basic-information-form [model]="basicForm"></app-basic-information-form>
-  <app-address-form [model]="addressFrom"></app-address-form>
+  <app-address-form class="mt-4" [model]="addressFrom"></app-address-form>
+
+  <div class="mt-4 text-right">
+    <button class="border rounded w-28 p-2 bg-blue-500 text-gray-50" (click)="onSubmit()">登録</button>
+  </div>
 </form>

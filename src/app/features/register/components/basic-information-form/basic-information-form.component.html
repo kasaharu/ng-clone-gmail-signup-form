@@ -1,1 +1,27 @@
-<p>basic-information-form works!</p>
+<div class="text-lg mb-4">基本情報</div>
+<ng-container [formGroup]="model">
+  <div class="flex flex-col" formGroupName="name">
+    <label>名前</label>
+    <div>
+      <input class="h-10 p-2 border border-gray-600 rounded" type="text" formControlName="familyName" placeholder="姓" />
+      <input class="h-10 p-2 border border-gray-600 rounded" type="text" formControlName="firstName" placeholder="名" />
+    </div>
+    <ng-container *ngIf="model?.errors?.emptyFullName">
+      <div class="text-red-600">氏名を入力指定ください</div>
+    </ng-container>
+    <ng-container *ngIf="model?.errors?.emptyFirstName">
+      <div class="text-red-600">名前（姓）を入力してください</div>
+    </ng-container>
+    <ng-container *ngIf="model?.errors?.emptyFamilyName">
+      <div class="text-red-600">名前（名）を入力してください</div>
+    </ng-container>
+  </div>
+  <div class="flex flex-col" formGroupName="birthday">
+    <label>誕生日</label>
+    <div>
+      <input class="h-10 p-2 border border-gray-600 rounded" type="number" formControlName="year" placeholder="年" />
+      <input class="h-10 p-2 border border-gray-600 rounded" type="number" formControlName="month" placeholder="月" />
+      <input class="h-10 p-2 border border-gray-600 rounded" type="number" formControlName="day" placeholder="日" />
+    </div>
+  </div>
+</ng-container>

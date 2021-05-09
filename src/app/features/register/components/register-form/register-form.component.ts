@@ -1,6 +1,28 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@ngneat/reactive-forms';
+import { Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, ValidatorFn } from '@ngneat/reactive-forms';
 import { Address, BasicInformation } from '../../domain/models';
+
+// tslint:disable-next-line:cyclomatic-complexity
+const fullNameValidator: ValidatorFn<BasicInformation> = (control) => {
+  const name = control.get('name');
+  const firstName = name?.get('firstName');
+  const familyName = name?.get('familyName');
+
+  if (firstName?.value === '' && familyName?.value === '') {
+    return { emptyFullName: true };
+  }
+
+  if (firstName?.value === '') {
+    return { emptyFirstName: true };
+  }
+
+  if (familyName?.value === '') {
+    return { emptyFamilyName: true };
+  }
+
+  return null;
+};
 
 @Component({
   selector: 'app-register-form',
@@ -11,24 +33,27 @@ import { Address, BasicInformation } from '../../domain/models';
 export class RegisterFormComponent implements OnInit {
   constructor(private readonly fb: FormBuilder) {}
 
-  basicForm: FormGroup<BasicInformation> = this.fb.group({
-    name: new FormGroup({
-      firstName: new FormControl(''),
-      familyName: new FormControl(''),
-    }),
-    gender: [null],
-    birthday: new FormGroup({
-      year: new FormControl(null),
-      month: new FormControl(null),
-      day: new FormControl(null),
-    }),
-    emailAdress: [''],
-    password: [''],
-    passwordConfirmation: [''],
-  });
+  basicForm: FormGroup<BasicInformation> = this.fb.group(
+    {
+      name: new FormGroup({
+        firstName: new FormControl(''),
+        familyName: new FormControl(''),
+      }),
+      gender: [null],
+      birthday: new FormGroup({
+        year: new FormControl(null),
+        month: new FormControl(null),
+        day: new FormControl(null),
+      }),
+      emailAdress: [''],
+      password: [''],
+      passwordConfirmation: [''],
+    },
+    { validators: [fullNameValidator] },
+  );
 
   addressFrom: FormGroup<Address> = this.fb.group({
-    zipCode: [null],
+    zipCode: [null, Validators.required],
     prefecture: [''],
     municipality: [''],
     street: [''],
@@ -41,4 +66,8 @@ export class RegisterFormComponent implements OnInit {
   });
 
   ngOnInit(): void {}
+
+  onSubmit(): void {
+    console.log(this.registrationForm.value);
+  }
 }

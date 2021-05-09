@@ -14,4 +14,8 @@ export class AddressFormComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {}
+
+  get zipCode() {
+    return this.model.get('zipCode');
+  }
 }
