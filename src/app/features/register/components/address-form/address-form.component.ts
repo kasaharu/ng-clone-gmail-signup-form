@@ -1,4 +1,6 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { FormGroup } from '@ngneat/reactive-forms';
+import { Address } from '../../domain/models';
 
 @Component({
   selector: 'app-address-form',
@@ -7,6 +9,8 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AddressFormComponent implements OnInit {
+  @Input()
+  model!: FormGroup<Address>;
   constructor() {}
 
   ngOnInit(): void {}

@@ -1,1 +1,8 @@
-<p>register-form works!</p>
+<div>
+  <span>ダミー新規会員登録</span>
+</div>
+
+<form [formGroup]="registrationForm">
+  <app-basic-information-form [model]="basicForm"></app-basic-information-form>
+  <app-address-form [model]="addressFrom"></app-address-form>
+</form>
