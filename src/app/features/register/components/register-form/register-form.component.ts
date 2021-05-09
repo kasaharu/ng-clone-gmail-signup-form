@@ -70,6 +70,7 @@ export class RegisterFormComponent implements OnInit {
 
   onSubmit(): void {
     this.checked = true;
+    // tslint:disable-next-line:no-console
     console.log(this.registrationForm.value);
   }
 }
