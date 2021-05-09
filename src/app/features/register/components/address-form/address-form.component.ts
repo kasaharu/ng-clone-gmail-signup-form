@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup } from '@ngneat/reactive-forms';
 import { Address } from '../../domain/models';
 
@@ -8,16 +8,12 @@ import { Address } from '../../domain/models';
   styleUrls: ['./address-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class AddressFormComponent implements OnInit {
+export class AddressFormComponent {
   @Input()
   model!: FormGroup<Address>;
 
   @Input()
   checked = false;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 
   get zipCode() {
     return this.model.get('zipCode');

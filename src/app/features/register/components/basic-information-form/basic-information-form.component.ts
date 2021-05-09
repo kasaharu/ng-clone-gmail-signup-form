@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { FormGroup } from '@ngneat/reactive-forms';
 import { BasicInformation } from '../../domain/models';
 
@@ -8,14 +8,10 @@ import { BasicInformation } from '../../domain/models';
   styleUrls: ['./basic-information-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class BasicInformationFormComponent implements OnInit {
+export class BasicInformationFormComponent {
   @Input()
   model!: FormGroup<BasicInformation>;
 
   @Input()
   checked = false;
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }
