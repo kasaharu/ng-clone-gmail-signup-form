@@ -5,7 +5,7 @@
     <div>
       <input class="h-10 p-2 border border-gray-600 rounded" type="text" formControlName="zipCode" placeholder="例: 1234567" />
     </div>
-    <ng-container *ngIf="zipCode.errors?.required">
+    <ng-container *ngIf="checked && zipCode.errors?.required">
       <div class="text-red-600">郵便番号は必須です</div>
     </ng-container>
   </div>

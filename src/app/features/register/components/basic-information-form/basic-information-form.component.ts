@@ -12,6 +12,9 @@ export class BasicInformationFormComponent implements OnInit {
   @Input()
   model!: FormGroup<BasicInformation>;
 
+  @Input()
+  checked = false;
+
   constructor() {}
 
   ngOnInit(): void {}

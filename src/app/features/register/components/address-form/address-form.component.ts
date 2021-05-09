@@ -11,6 +11,10 @@ import { Address } from '../../domain/models';
 export class AddressFormComponent implements OnInit {
   @Input()
   model!: FormGroup<Address>;
+
+  @Input()
+  checked = false;
+
   constructor() {}
 
   ngOnInit(): void {}

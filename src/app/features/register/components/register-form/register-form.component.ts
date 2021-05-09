@@ -32,6 +32,7 @@ const fullNameValidator: ValidatorFn<BasicInformation> = (control) => {
 })
 export class RegisterFormComponent implements OnInit {
   constructor(private readonly fb: FormBuilder) {}
+  checked = false;
 
   basicForm: FormGroup<BasicInformation> = this.fb.group(
     {
@@ -68,6 +69,7 @@ export class RegisterFormComponent implements OnInit {
   ngOnInit(): void {}
 
   onSubmit(): void {
+    this.checked = true;
     console.log(this.registrationForm.value);
   }
 }
