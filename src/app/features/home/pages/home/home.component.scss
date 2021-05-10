@@ -5,4 +5,20 @@
 
 a {
   margin-bottom: 16px;
+
+  &:link {
+    @apply text-blue-700;
+  }
+
+  &:visited {
+    @apply text-indigo-900;
+  }
+
+  &:hover {
+    @apply text-red-500;
+  }
+
+  &:active {
+    color: #ff8000;
+  }
 }
