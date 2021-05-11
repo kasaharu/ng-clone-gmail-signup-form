@@ -9,10 +9,10 @@
     <ng-container *ngIf="checked && model?.errors?.emptyFullName">
       <div class="text-red-600">氏名を入力指定ください</div>
     </ng-container>
-    <ng-container *ngIf="checked && model?.errors?.emptyFirstName">
+    <ng-container *ngIf="checked && model?.errors?.emptyFamilyName">
       <div class="text-red-600">名前（姓）を入力してください</div>
     </ng-container>
-    <ng-container *ngIf="checked && model?.errors?.emptyFamilyName">
+    <ng-container *ngIf="checked && model?.errors?.emptyFirstName">
       <div class="text-red-600">名前（名）を入力してください</div>
     </ng-container>
   </div>
